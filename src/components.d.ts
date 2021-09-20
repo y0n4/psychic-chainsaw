@@ -6,20 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
-    }
     interface PlayChip {
         "delete": boolean;
         "disabled": boolean;
@@ -27,52 +13,19 @@ export namespace Components {
         "label": string;
         "outlined": boolean;
     }
-    interface PlaySwitch {
-        "label": string;
-        "off": string;
-        "on": string;
-    }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLPlayChipElement extends Components.PlayChip, HTMLStencilElement {
     }
     var HTMLPlayChipElement: {
         prototype: HTMLPlayChipElement;
         new (): HTMLPlayChipElement;
     };
-    interface HTMLPlaySwitchElement extends Components.PlaySwitch, HTMLStencilElement {
-    }
-    var HTMLPlaySwitchElement: {
-        prototype: HTMLPlaySwitchElement;
-        new (): HTMLPlaySwitchElement;
-    };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
         "play-chip": HTMLPlayChipElement;
-        "play-switch": HTMLPlaySwitchElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
-    }
     interface PlayChip {
         "delete"?: boolean;
         "disabled"?: boolean;
@@ -80,24 +33,15 @@ declare namespace LocalJSX {
         "label"?: string;
         "outlined"?: boolean;
     }
-    interface PlaySwitch {
-        "label"?: string;
-        "off"?: string;
-        "on"?: string;
-    }
     interface IntrinsicElements {
-        "my-component": MyComponent;
         "play-chip": PlayChip;
-        "play-switch": PlaySwitch;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "play-chip": LocalJSX.PlayChip & JSXBase.HTMLAttributes<HTMLPlayChipElement>;
-            "play-switch": LocalJSX.PlaySwitch & JSXBase.HTMLAttributes<HTMLPlaySwitchElement>;
         }
     }
 }
