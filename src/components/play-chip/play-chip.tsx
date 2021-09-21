@@ -27,10 +27,6 @@ export class PlayChip {
     this.isDelete = true;
   };
 
-  /**
-   * slot- accepts a image url tag or just a text.
-   * if its in text form then just accept the first letter to render
-   */
   render() {
     return (
       <div class={this.determinePropStyle()}>
