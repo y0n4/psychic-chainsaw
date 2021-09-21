@@ -9,7 +9,6 @@ export namespace Components {
     interface PlayChip {
         "delete": boolean;
         "disabled": boolean;
-        "icon": string;
         "label": string;
         "outlined": boolean;
     }
@@ -29,7 +28,6 @@ declare namespace LocalJSX {
     interface PlayChip {
         "delete"?: boolean;
         "disabled"?: boolean;
-        "icon"?: string;
         "label"?: string;
         "outlined"?: boolean;
     }

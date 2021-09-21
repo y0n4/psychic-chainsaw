@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, State, h } from '@stencil/core';
 
 @Component({
   tag: 'play-chip',
@@ -7,25 +7,38 @@ import { Component, Prop, h } from '@stencil/core';
 })
 
 export class PlayChip {
-  @Prop() icon: string;
+
   @Prop() label: string;
   @Prop() disabled: boolean;
   @Prop() outlined: boolean;
   @Prop() delete: boolean;
 
+  @State() isDelete: boolean = false;
+
   determinePropStyle = () => {
-    let chipClass = "chip";
-    if (this.disabled) chipClass += " disabled";
-    if (this.outlined) chipClass += " outlined";
+    let chipClass = 'chip'; 
+    if (this.disabled) chipClass += ' disabled';
+    if (this.outlined) chipClass += ' outlined';
+    if (this.isDelete) chipClass += ' hidden';
     return chipClass;
   }
 
+  handleCloseChip = () => {
+    this.isDelete = true;
+  };
+
+  /**
+   * slot- accepts a image url tag or just a text.
+   * if its in text form then just accept the first letter to render
+   */
   render() {
     return (
       <div class={this.determinePropStyle()}>
-        {this.icon && (<img src={this.icon} />)}
+        <slot />
         <p>{this.label}</p>
-        {this.delete && (<button>✕</button>)}
+        {this.delete && (
+          <button onClick={this.handleCloseChip}>✕</button>
+        )}
       </div>
     )
   }

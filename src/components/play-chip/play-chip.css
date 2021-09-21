@@ -13,6 +13,10 @@
   margin: 5px;
 }
 
+.hidden {
+  display: none;
+}
+
 .disabled {
   opacity: 0.3;
 }
@@ -22,11 +26,15 @@
   background-color: transparent;
 }
 
-img {
+::slotted(*) {
   object-fit: cover;
   border-radius: 50%;
   width: 20px;
   height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--icon-background, gainsboro);
 }
 
 p {
