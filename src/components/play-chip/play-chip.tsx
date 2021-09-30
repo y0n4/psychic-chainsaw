@@ -15,21 +15,20 @@ export class PlayChip {
 
   @State() isDelete: boolean = false;
 
-  determinePropStyle = () => {
-    let chipClass = 'chip'; 
-    if (this.disabled) chipClass += ' disabled';
-    if (this.outlined) chipClass += ' outlined';
-    if (this.isDelete) chipClass += ' hidden';
-    return chipClass;
-  }
-
-  handleCloseChip = () => {
+  handleCloseChip = (): void => {
     this.isDelete = true;
-  };
+  }
 
   render() {
     return (
-      <div class={this.determinePropStyle()}>
+      <div
+        class={{
+          chip: true,
+          hidden: this.isDelete,
+          disabled: this.disabled,
+          outlined: this.outlined,
+        }}
+      >
         <slot />
         <p>{this.label}</p>
         {this.delete && (
