@@ -11,6 +11,7 @@ describe('play-chip', () => {
       <play-chip>
         <mock:shadow-root>
           <div class="chip">
+            <slot></slot>
             <p></p>
           </div>
         </mock:shadow-root>
@@ -27,6 +28,7 @@ describe('play-chip', () => {
       <play-chip label="Stencil">
         <mock:shadow-root>
           <div class="chip">
+            <slot></slot>
             <p>Stencil</p>
           </div>
         </mock:shadow-root>

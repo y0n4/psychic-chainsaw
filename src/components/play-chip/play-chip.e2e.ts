@@ -20,13 +20,19 @@ describe('play-chip', () => {
     component.setProperty('label', 'James');
     await page.waitForChanges();
     expect(element.textContent).toEqual(`James`);
+  });
+  
+  it('renders changes to the name data', async () => {
+    const page = await newE2EPage();
 
-    // component.setProperty('last', 'Quincy');
-    // await page.waitForChanges();
-    // expect(element.textContent).toEqual(`Hello, World! I'm James Quincy`);
+    await page.setContent('<play-chip delete={true}></play-chip>');
+    const button = await page.find('play-chip >>> div >>> button')
+    const element = await page.find('play-chip >>> div');
+    expect(element).toHaveClass('chip');
 
-    // component.setProperty('middle', 'Earl');
-    // await page.waitForChanges();
-    // expect(element.textContent).toEqual(`Hello, World! I'm James Earl Quincy`);
+    expect(button).toBeTruthy();
+    button.click();
+    await page.waitForChanges();
+    expect(element).toHaveClass('hidden');
   });
 });
